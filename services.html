@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <link href="Main.css" rel="stylesheet"/>
+        <style>
+            input[type=text] {
+                width: 130px;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                background-color: white;
+                background-image: url('searchicon.png');
+                background-position: 10px 10px; 
+                background-repeat: no-repeat;
+                padding: 12px 20px 12px 40px;
+                -webkit-transition: width 0.4s ease-in-out;
+                transition: width 0.4s ease-in-out;
+                margin-left: 310px;
+                margin-top: 50px;
+            }
+
+            input[type=text]:focus {
+                width: 63%;
+            }
+        </style>
+        <script src="jquery.min.js"></script>
+        <script src="jquery.js"></script>
+    </head>
+    <body>
+        <div id="MenuIcon">
+            <div id="MenuLine"></div>
+        </div>
+        
+        <div id="MainMenu">
+            <div id="logo">
+                <img src="Images/logo.png" height="75px" width="75px"/>
+            </div>
+            <ul>
+                <li id="homenav">HOME<div class="line"></div></li>
+                <li id="servicesnav">SERVICES<div class="line"></div></li>
+                <li id="contactnav">CONTACT<div class="line"></div></li>
+            </ul>
+            <div id="close">
+                <img src="Images/Close.png" height="30px" width="30px"/>
+            </div>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="column">
+                    <div class="cards">
+                        <img src="Images/apollo-hospital.jpg" style="width: 100%; height:200px;">
+                        <h3> Apollo Health Care </h3>
+                        <p> Rating - 4.3 </p>
+                        <p> Distance - 1.6Km </p>
+                    </div>
+                </div>
+                      
+                <div class="column">
+                    <div class="cards">
+                        <img src="Images/fortis.jpg" style="width: 100%; height:200px;">
+                        <h3> Fortis Hospital </h3>
+                        <p> Rating - 4.2 </p>
+                        <p> Distance - 1.3Km </p>
+                    </div>
+                </div>
+                        
+                <div class="column">
+                    <div class="cards">
+                        <img src="Images/sankaranethralaya.jpg" style="width: 100%; height:200px;">
+                        <h3> Sankara Nethralaya </h3>
+                        <p> Rating - 4.7 </p>
+                        <p> Distance - 2.3Km </p>
+                    </div>
+                </div>
+            </div>        
+        </div>
+
+        <div>
+            <form>
+                <input type="text" name="search" placeholder="Search..">
+            </form>
+        </div>
+
+    </body>
+
+</html>
