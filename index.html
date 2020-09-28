@@ -1,134 +1,142 @@
-<html>
-    <head>
-        <link href="Main.css" rel="stylesheet"/>
-        <script src="jquery.min.js"></script>
-        <script src="jquery.js"></script>
-    </head>
-    <body>
-        <div id="MenuIcon">
-            <div id="MenuLine"></div>
-        </div>
-        
-        <div id="MainMenu">
-            <div id="logo">
-                <img src="Images/logo.png" height="75px" width="75px"/>
-            </div>
-            <ul>
-                <li id="homenav">HOME<div class="line"></div></li>
-                <li id="servicesnav">SERVICES<div class="line"></div></li>
-                <li id="contactnav">CONTACT<div class="line"></div></li>
-            </ul>
-            <div id="close">
-                <img src="Images/Close.png" height="30px" width="30px"/>
-            </div>
-        </div>
+<html lang="en">
 
-        <div>
-            <div class="card">
-                <img src="Images/iamb.png" alt="Ambulance" style="width:50%; height: 200px;">
-                <h1>iAmbulance</h1>
-                <p class="city">Kolkata</p>
-                <p>Dont worry we are here to serve, book your iAmbulance and we will be there at no time.</p>
-                <p id="searchiamb"><button>Book</button></p>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sunny Kumar">
+    <title>iAmbulance</title>
+    <link href="Main.css" rel="stylesheet" />
+    <script src="jquery.min.js"></script>
+    <script src="jquery.js"></script>
+</head>
 
-            <div id="circleloading">
-                <div id="circle1"></div>
-                <div id="shadowring"></div>
-                <div id="circle2"></div>
-                <canvas height="200" width="200" id="counter">
-            </div>
-             
-            <div class="card2">
-                <div id="map"></div>
-                <h1>Ankan Dutta</h1>
-                <p class="title">Rating 4.7</p>
-                <p>WB1234N67</p>
-                <p>Swift Dezire | 4 Seat</p>
-                <p><button>Contact</button></p>
-                <p><button>Open in Maps</button></p>
-            </div>
+<body>
+    <div id="MenuIcon">
+        <div id="MenuLine"></div>
+    </div>
+
+    <div id="MainMenu">
+        <div id="logo">
+            <img src="Images/logo.png" height="75px" width="75px" />
+        </div>
+        <ul>
+            <li id="homenav">HOME<div class="line"></div>
+            </li>
+            <li id="servicesnav">SERVICES<div class="line"></div>
+            </li>
+            <li id="contactnav">CONTACT<div class="line"></div>
+            </li>
+        </ul>
+        <div id="close">
+            <img src="Images/Close.png" height="30px" width="30px" />
+        </div>
+    </div>
+
+    <div>
+        <div class="card">
+            <img src="Images/iamb.png" alt="Ambulance" style="width:50%; height: 200px;">
+            <h1>iAmbulance</h1>
+            <p class="city">Kolkata</p>
+            <p>Dont worry we are here to serve, book your iAmbulance and we will be there at no time.</p>
+            <p id="searchiamb"><button>Book</button></p>
         </div>
 
-    </body>
+        <div id="circleloading">
+            <div id="circle1"></div>
+            <div id="shadowring"></div>
+            <div id="circle2"></div>
+            <canvas height="200" width="200" id="counter">
+        </div>
+
+        <div class="card2">
+            <div id="map"></div>
+            <h1>Ankan Dutta</h1>
+            <p class="title">Rating 4.7</p>
+            <p>WB1234N67</p>
+            <p>Swift Dezire | 4 Seat</p>
+            <p><button>Contact</button></p>
+            <p><button>Open in Maps</button></p>
+        </div>
+    </div>
 
     <script>
         var map, infoWindow;
+
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 17,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-
-        var marker = null;
-      
-      function autoUpdate() {
-        navigator.geolocation.getCurrentPosition(function(position) {  
-          var newPoint = new google.maps.LatLng(position.coords.latitude, 
-                                                position.coords.longitude);
-      
-          console.log(position.coords.latitude);
-          console.log(position.coords.longitude);
-          if (marker) {
-            // Marker already created - Move it
-            marker.setPosition(newPoint);
-          }
-          else {
-            // Marker does not exist - Create it
-            marker = new google.maps.Marker({
-              position: newPoint,
-              animation: google.maps.Animation.DROP,
-              map: map
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
-          }
-      
-          // Center the map on the new position
-          map.setCenter(newPoint);
-        }); 
-      
-        // Call the autoUpdate() function every 5 seconds
-        // setTimeout(autoUpdate, 5000);
-      }
-      
-      autoUpdate();
+
+            var marker = null;
+
+            function autoUpdate() {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var newPoint = new google.maps.LatLng(position.coords.latitude,
+                        position.coords.longitude);
+
+                    console.log(position.coords.latitude);
+                    console.log(position.coords.longitude);
+                    if (marker) {
+                        // Marker already created - Move it
+                        marker.setPosition(newPoint);
+                    } else {
+                        // Marker does not exist - Create it
+                        marker = new google.maps.Marker({
+                            position: newPoint,
+                            animation: google.maps.Animation.DROP,
+                            map: map
+                        });
+                    }
+
+                    // Center the map on the new position
+                    map.setCenter(newPoint);
+                });
+
+                // Call the autoUpdate() function every 5 seconds
+                // setTimeout(autoUpdate, 5000);
             }
+
+            autoUpdate();
+        }
     </script>
 
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrOBAviz7LPGrTX3-tnVHkO3Fdb0xheSs&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrOBAviz7LPGrTX3-tnVHkO3Fdb0xheSs&callback=initMap">
     </script>
 
-    <script type="application/javascript">        
+    <script type="application/javascript">
         function startloading() {
             var counter = document.getElementById('counter').getContext('2d');
             var no = 0;
             var pointToFill = 4.72;
-            var cw = counter.canvas.width;  
-            var ch = counter.canvas.height; 
-            var diff;   
-            
-            function fillCounter(){
-                diff = ((no/100) * Math.PI*2*10);
-                counter.clearRect(0,0,cw,ch);
-                counter.lineWidth = 15;  
-                counter.fillStyle = '#fff';     // color that you want to fill in counter/circle
-                counter.strokeStyle = '#F5E0A9';    // Stroke Color
+            var cw = counter.canvas.width;
+            var ch = counter.canvas.height;
+            var diff;
+
+            function fillCounter() {
+                diff = ((no / 100) * Math.PI * 2 * 10);
+                counter.clearRect(0, 0, cw, ch);
+                counter.lineWidth = 15;
+                counter.fillStyle = '#fff'; // color that you want to fill in counter/circle
+                counter.strokeStyle = '#F5E0A9'; // Stroke Color
                 counter.textAlign = 'center';
-                counter.font = "25px monospace";    //set font size and face
-                counter.fillText(no+'%',100,110);       //fillText(text,x,y);
+                counter.font = "25px monospace"; //set font size and face
+                counter.fillText(no + '%', 100, 110); //fillText(text,x,y);
                 counter.beginPath();
-                counter.arc(100,100,90,pointToFill,diff/10+pointToFill);    //arc(x,y,radius,start,stop)
-                counter.stroke();   // to fill stroke
+                counter.arc(100, 100, 90, pointToFill, diff / 10 + pointToFill); //arc(x,y,radius,start,stop)
+                counter.stroke(); // to fill stroke
                 // now add condition
-                if(no >= 99)
-                {
-                    clearTimeout(fill);  
+                if (no >= 99) {
+                    clearTimeout(fill);
                     $("#circleloading").hide();
                     $(".card2").show();
                 }
                 no++;
             }
-            var fill = setInterval(fillCounter,50);     //call the fillCounter function after every 50MS
+            var fill = setInterval(fillCounter, 50); //call the fillCounter function after every 50MS
         }
     </script>
+</body>
+
 </html>
